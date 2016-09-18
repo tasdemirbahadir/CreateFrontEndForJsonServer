@@ -34,7 +34,7 @@ run : ```webdriver-manager update```
 * Run tests : ```protractor protractor.conf.js```
 * The results must be : 
 ```
-  3 specs, 0 failures
+  6 specs, 0 failures
 ```
 
 ## Versioning
