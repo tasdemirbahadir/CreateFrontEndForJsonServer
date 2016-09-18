@@ -1,0 +1,14 @@
+{
+  "name": "ginger-frontend-assignment",
+  "version": "1.0.0",
+  "description": "Ginger Payments Front-End Assignment",
+  "main": "index.js",
+  "scripts": {
+    "start:api": "json-server --watch db.json"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "json-server": "^0.8.14"
+  }
+}

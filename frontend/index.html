@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ginger Payments - Frontend Assignment</title>
+    <link rel="shortcut icon" href="favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400,600,300,700">
+	<link rel="stylesheet" href="./css/datatables.min.css">
+    <!--Feel free to remove the style tag-->
+    <style>
+        body{
+            font-family: Open Sans;
+        }
+        h1 {
+            text-align: center;
+        }
+        aside {
+            display: flex;
+            flex-direction: column;
+            width: 220px;
+            height: 100%;
+        }
+        button {
+            margin: 5px;
+            padding: 5px;
+        }
+        main {
+            display: flex;
+            width: 100%;
+            height: auto;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+	<div ng-app="json_server_app">
+		<div ng-controller="json_server_app_controller">
+			<header>
+				<h1>Assignment</h1>
+			</header>
+			<main>
+				<aside>
+					<button id="callback_button" ng-click="callbackClick()">Callback</button>
+					<button ng-click="promiseClick()">Promise</button>
+					<table width="100%">
+						<tr>
+							<td>
+								<select data-ng-options="o.name for o in filterOptions" data-ng-model="selectedFilterOption"></select>
+							</td>
+							<td>
+								<button ng-click="filterClick()">Filter</button>
+							</td>
+						</tr>
+					</table>
+					
+					<button ng-click="addPaymentClick()">Add payment</button>
+				</aside>
+				<section>
+					<div ng-show="paymentsDataTable" width="100%">
+						<table id="payments_table" class="display nowrap" cellspacing="0" width="100%">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Method</th>
+									<th>Amount</th>
+									<th>Currency</th>
+									<th>Created</th>
+									<th>Status</th>
+									<th>Merchant</th>
+								</tr>
+							</thead>
+						</table>
+					</div>
+					<form class="form-horizontal" ng-show="adPaymentForm" role="form">
+					    <div class="form-group">
+						    <label for="inputName3" class="col-sm-2 control-label">Method</label>
+						    <div class="col-sm-4">
+						        <select data-ng-options="m.value for m in methodsArray" data-ng-model="selectedMethod"></select>
+						    </div>
+					    </div>
+						<div class="form-group">
+							<label for="inputEmail3" class="col-sm-2 control-label">Amount</label>
+							<div class="col-sm-4">
+								<input onkeypress='return event.charCode >= 48 && event.charCode <= 57'  class="form-control" id="inputAmount" placeholder="Amount" ng-model="formInfo.amount">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Currency</label>
+							<div class="col-sm-4">
+								<select data-ng-options="c.value for c in currenciesArray" data-ng-model="selectedCurrency"></select>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Status</label>
+							<div class="col-sm-4">
+								<select data-ng-options="s.value for s in statusesArray" data-ng-model="selectedStatus"></select>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Merchant</label>
+							<div class="col-sm-4">
+								<select data-ng-options="m.value for m in merchantsArray" data-ng-model="selectedMerchant"></select>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button ng-click="addPaymentMethodClick()">Save New Payment</button>
+							</div>
+						</div>
+						<span style="color: orange;" ng-show="methodRequired">{{methodRequired}}</span><br>
+						<span style="color: orange;" ng-show="amountRequired">{{amountRequired}}</span><br>
+						<span style="color: orange;" ng-show="currencyRequired">{{currencyRequired}}</span><br>
+						<span style="color: orange;" ng-show="statusRequired">{{statusRequired}}</span><br>
+						<span style="color: orange;" ng-show="merchantRequired">{{merchantRequired}}</span>
+						<span id="addResult" ng-show="addResult">{{addResult}}</span>
+					</form>
+				</section>
+			</main>
+		</div>
+	</div>
+	
+	<!-- Js includes -->
+	<script src="./js/angular.min.js" type="text/javascript"></script>
+	<script src="./js/datatables.min.js" type="text/javascript"></script>
+	<script src="./js/main.js" type="text/javascript"></script>
+</body>
+</html>
