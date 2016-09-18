@@ -22,7 +22,7 @@ run : ```webdriver-manager update```
 
 ## Run
 
-* Go to directory |project-source|/sever
+* Go to directory |project-source|/server
 * Start json server : ```json-server --watch db.json```
 * Go to index.html file location |project-source|/frontend, open it on the browser
 * See that project is up and running
