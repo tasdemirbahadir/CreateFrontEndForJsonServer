@@ -22,15 +22,15 @@ run : ```webdriver-manager update```
 
 ## Run
 
-* Go to directory <project-source>/sever
+* Go to directory |project-source|/sever
 * Start json server : ```json-server --watch db.json```
-* Go to index.html file location <project-source>/frontend, open it on the browser
+* Go to index.html file location |project-source|/frontend, open it on the browser
 * See that project is up and running
 
 ## Testing
 
 * Start selenium server : ```webdriver-manager start```
-* In another terminal, go to <project-source>/frontend/js/e2eTests
+* In another terminal, go to |project-source|/frontend/js/e2eTests
 * Run tests : ```protractor protractor.conf.js```
 * The results must be : 
 ```
